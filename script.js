@@ -1,20 +1,49 @@
+/* ============ VISTA: MANUAL x REGISTRO ============ */
+function aplicarVista(){
+  const registro = location.hash === '#registro';
+  document.documentElement.classList.toggle('mode-registro', registro);
+  document.title = registro ? 'Registro de Tarefas · Squad Órion' : 'Manual de Automações';
+  if(registro) window.scrollTo(0, 0);
+}
+aplicarVista();
+window.addEventListener('hashchange', aplicarVista);
+
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ============ MOBILE SIDEBAR ============ */
+  /* ============ MENU HAMBÚRGUER (todas as telas) ============ */
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('overlay');
   const menuToggle = document.getElementById('menuToggle');
+  const sidebarClose = document.getElementById('sidebarClose');
 
-  function openSidebar(){ sidebar.classList.add('open'); overlay.classList.add('show'); }
-  function closeSidebar(){ sidebar.classList.remove('open'); overlay.classList.remove('show'); }
+  function openSidebar(){
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+    menuToggle?.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+    setTimeout(() => sidebarClose?.focus(), 50);
+  }
+  function closeSidebar(devolverFoco = true){
+    if(!sidebar.classList.contains('open')) return;
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+    if(devolverFoco) menuToggle?.focus({ preventScroll:true });
+  }
 
   menuToggle?.addEventListener('click', () => {
     sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
   });
-  overlay?.addEventListener('click', closeSidebar);
+  sidebarClose?.addEventListener('click', () => closeSidebar());
+  overlay?.addEventListener('click', () => closeSidebar());
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeSidebar();
+  });
 
-  document.querySelectorAll('.sidebar a, .sidebar .nav-link').forEach(el=>{
-    el.addEventListener('click', () => { if(window.innerWidth <= 980) closeSidebar(); });
+  // ao escolher um destino, o menu fecha sozinho
+  document.querySelectorAll('.sidebar a, .sidebar .nav-link').forEach(el => {
+    el.addEventListener('click', () => closeSidebar(false));
   });
 
   /* ============ NAV LINK SCROLL (top-level groups) ============ */
@@ -143,10 +172,11 @@ document.addEventListener('DOMContentLoaded', () => {
     "01. Natureza_Citação nunca leva sentimento em massa às cegas.",
     "Facebook: não confie na resposta pública, confira sempre a planilha.",
     "Terminou a página do relatório? Não esqueça da tag de revisão final.",
-    "Fim do expediente? Preencha o Registro de Tarefas antes de sair. 📝"
+    "Fim do expediente? Preencha o Registro de Tarefas no botão amarelo do menu. 📝"
   ];
   let tipIndex = 0;
 
+  if(watchAvatar && watchBubble && watchText){
   function showTip(){
     watchText.textContent = tips[tipIndex % tips.length];
     tipIndex++;
@@ -166,11 +196,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // auto-peek once after a short delay to invite interaction
   setTimeout(() => { showTip(); setTimeout(()=>watchBubble.classList.remove('show'), 6000); }, 2500);
+  }
 
 });
 
 /* ============================================================
-   REGISTRO DE TAREFAS (seção 08)
+   REGISTRO DE TAREFAS (index.html#registro)
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   const card = document.getElementById('regCard');
@@ -324,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $('regConcluir').addEventListener('click', () => {
     modal.classList.remove('show');
     resetar();
-    document.getElementById('registro').scrollIntoView({ behavior:'smooth', block:'start' });
+    window.scrollTo({ top:0, behavior:'smooth' });
   });
   modal.addEventListener('keydown', (e) => {
     if(e.key === 'Escape') $('regConcluir').click();
