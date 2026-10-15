@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manual de Automações</title>
+<title>Painel de Operações</title>
 <meta name="description" content="Manual operacional da Squad Órion: tarefas e prioridades, monitoramento das automações, Concierge, Chatbot e análise das conversas.">
 <link rel="icon" href="assets/logo-cb.png">
 <link rel="stylesheet" href="style.css">
+<script>if(location.hash==='#registro')document.documentElement.classList.add('mode-registro');</script>
 </head>
 <body>
 <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
@@ -17,18 +18,55 @@
 
   <!-- ===================== SIDEBAR ===================== -->
   <aside class="sidebar" id="sidebar" aria-label="Navegação do manual">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Fechar menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
     <div class="brand">
       <img src="assets/logo-cb.png" alt="Casas Bahia">
       <div class="brand-text">
-        <div class="b1">Manual de Automações</div>
+        <div class="b1"><span class="only-manual">Painel de Operações</span><span class="only-registro">Registro de Tarefas</span></div>
         <div class="b2">Squad Órion · Elife</div>
       </div>
     </div>
     <div class="squad-pill"><span class="dot"></span> Casas Bahia &amp; Pontofrio</div>
 
-    <ul class="side-nav" id="sideNav">
+    <a class="side-cta only-manual" href="#registro" target="_blank" rel="noopener" title="Abre em uma nova aba">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span>Registro de Tarefas<small>Preencha no fim do expediente</small></span>
+    </a>
+
+    <ul class="side-nav only-registro">
       <li class="nav-group">
-        <div class="nav-link" data-target="registro"><span class="num">01</span> Registro de Tarefas</div>
+        <span class="nav-link active" aria-current="page">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Registro de Tarefas
+        </span>
+      </li>
+      <li class="nav-group">
+        <a class="nav-link" href="index.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg>
+          Painel de Operações
+        </a>
+      </li>
+    </ul>
+
+    <ul class="side-nav only-manual" id="sideNav">
+      <li class="nav-group">
+        <div class="nav-link" data-target="treinamentos"><span class="num">01</span> Treinamentos</div>
+        <ul class="side-sub">
+          <li><a href="#explicacao">Explicação</a></li>
+          <li><a href="#101-elife">Conhecendo a Elife</a></li>
+          <li><a href="#101-crm">Manual de atendimento</a></li>
+          <li><a href="#101-buzz">FAQ Buzzmonitor</a></li>
+          <li><a href="#101-chat">Guia Google Chat</a></li>
+          <li><a href="#101-baianinho">Tom de Voz do Baianinho</a></li>
+          <li><a href="#101-pin">Tom de voz do Pin</a></li>
+          <li><a href="#101-prompts">BahiaAvalia &amp; Pinfessor</a></li>
+          <li><a href="#tarefas">Manual de Automações</a></li>
+          <li><a href="#101-carne">Carnê</a></li>
+          <li><a href="#101-venda">Manual de Pré-venda</a></li>
+          <li><a href="#101-estrategia">Estratégia 2026</a></li>
+        </ul>
       </li>
       <li class="nav-group">
         <div class="nav-link" data-target="tarefas"><span class="num">02</span> Tarefas e Prioridades</div>
@@ -39,10 +77,10 @@
         </ul>
       </li>
       <li class="nav-group">
-        <div class="nav-link" data-target="monitoramento"><span class="num">03</span> Monitoramento das Automações</div>
+        <div class="nav-link" data-target="monitoramento"><span class="num">02</span> Monitoramento das Automações</div>
       </li>
       <li class="nav-group">
-        <div class="nav-link" data-target="concierge"><span class="num">04</span> Concierge</div>
+        <div class="nav-link" data-target="concierge"><span class="num">03</span> Concierge</div>
         <ul class="side-sub">
           <li><a href="#analise-respostas">Análise das respostas</a></li>
           <li><a href="#envio-link">Conferência de envio de link</a></li>
@@ -50,27 +88,27 @@
         </ul>
       </li>
       <li class="nav-group">
-        <div class="nav-link" data-target="chatbot"><span class="num">05</span> Chatbot</div>
+        <div class="nav-link" data-target="chatbot"><span class="num">04</span> Chatbot</div>
         <ul class="side-sub">
           <li><a href="#chatbot-planilha">Auditoria na planilha</a></li>
           <li><a href="#chatbot-critico">Casos críticos</a></li>
         </ul>
       </li>
       <li class="nav-group">
-        <div class="nav-link" data-target="classificacao"><span class="num">06</span> Classificação</div>
+        <div class="nav-link" data-target="classificacao"><span class="num">05</span> Classificação</div>
         <ul class="side-sub">
           <li><a href="#revisao-classificacaos">Revisão da Classificação</a></li>
           <li><a href="#sentimento">Ajuste de sentimento</a></li>
         </ul>
       </li>
       <li class="nav-group">
-        <div class="nav-link" data-target="naomapeados"><span class="num">07</span> Não-Mapeados</div>
+        <div class="nav-link" data-target="naomapeados"><span class="num">06</span> Não-Mapeados</div>
         <ul class="side-sub">
           <li><a href="#classificacaomapeados">Classificação de Não Mapeados</a></li>
         </ul>
       </li>
       <li class="nav-group">
-        <div class="nav-link" data-target="escala-expediente"><span class="num">08</span> Escala de Expediente</div>
+        <div class="nav-link" data-target="escala-expediente"><span class="num">07</span> Escala de Expediente</div>
         <ul class="side-sub">
           <li><a href="#escala-dedicada">Atuação dedicada</a></li>
           <li><a href="#escala-compartilhada">Atuação compartilhada</a></li>
@@ -78,7 +116,7 @@
       </li>
     </ul>
 
-    <div class="sidebar-footer">
+    <div class="sidebar-footer only-manual">
       <div class="progress-wrap">
         Progresso de leitura
         <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
@@ -93,23 +131,23 @@
   <!-- ===================== MAIN ===================== -->
   <div class="main">
 
-    <div class="mobile-topbar">
+    <div class="mobile-topbar topbar">
+      <button id="menuToggle" class="menu-toggle" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <span class="menu-toggle-label">Menu</span>
+      </button>
       <div class="brand">
         <img src="assets/logo-cb.png" alt="Casas Bahia" style="width:26px">
-        <div class="brand-text"><div class="b1" style="font-size:.92rem">Manual de Automações</div></div>
+        <div class="brand-text"><div class="b1" style="font-size:.92rem"><span class="only-manual">Painel de Operações</span><span class="only-registro">Registro de Tarefas</span></div></div>
       </div>
-      <button id="menuToggle" aria-label="Abrir menu">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
     </div>
 
     <!-- ===================== HERO ===================== -->
-    <header class="hero">
+    <header class="hero only-manual">
       <div class="hero-inner">
         <div>
-          <span class="hero-eyebrow">📘 Guia oficial de operação</span>
-          <h1>Manual de<br>Automações</h1>
-          <p class="lead">Guia de referência para revisão das automações de Concierge, Chatbot e Classificação.</p>
+          <span class="hero-eyebrow">📘 Guia oficial de operação da Squad Órion</span>
+          <h1>Painel de<br>Operações</h1>
         </div>
         <div class="hero-mascots">
           <img src="assets/baianinho.png" alt="Mascote Casas Bahia">
@@ -118,190 +156,64 @@
       </div>
     </header>
 
-    <main id="conteudo" class="content">
+    <main id="conteudo" class="content only-manual">
 
-
-      <!-- ============================================================
-           01 · REGISTRO DE TAREFAS
+  <!-- ============================================================
+           01 · TREINAMENTOS
       ============================================================ -->
-      <section class="section" id="registro">
+
+      <section class="section" id="treinamentos">
         <div class="section-head">
-          <span class="section-eyebrow">01 · Fim do expediente</span>
-          <h2>Registro de Tarefas</h2>
-          <p class="desc">Antes de encerrar o turno, registre o que você fez hoje. Só aparecem as perguntas dos escopos em que você atuou.</p>
-        </div>
-
-        <div class="reg-card" id="regCard">
-          <div class="reg-body">
-
-            <div class="reg-progress" id="regProgress" hidden>
-              <div class="reg-progress-meta">
-                <span id="regCounter">Pergunta 1 de 1</span>
-                <span class="reg-scope" id="regScope"></span>
-              </div>
-              <div class="reg-track"><div class="reg-fill" id="regFill"></div></div>
-            </div>
-
-            <!-- Tela 1 · Projeto -->
-            <div class="reg-screen is-active" id="reg-projeto">
-              <h3 class="reg-title">Qual projeto você atuou hoje?</h3>
-              <div class="reg-projects">
-                <button type="button" class="reg-project" data-projeto="Casas Bahia">
-                  <span class="rp-name">Casas Bahia</span>
-                  <span class="rp-sub">Casas Bahia &amp; Pontofrio</span>
-                </button>
-                <button type="button" class="reg-project is-muted" data-projeto="MOBIL">
-                  <span class="rp-name">MOBIL</span>
-                  <span class="rp-sub">Ainda sem formulário ativo</span>
-                </button>
-              </div>
-              <p class="reg-error" id="regErrProjeto" role="alert"></p>
-            </div>
-
-            <!-- Tela 2 · Identificação -->
-            <div class="reg-screen" id="reg-identificacao">
-              <div class="reg-field">
-                <label class="reg-label" for="reg-data">Data do registro</label>
-                <input class="reg-input" type="date" id="reg-data" readonly>
-              </div>
-              <div class="reg-field">
-                <label class="reg-label" for="reg-nome">Quem é você?</label>
-                <select class="reg-input" id="reg-nome">
-                  <option value="" disabled selected>Selecione seu nome e horário</option>
-                  <option value="Cauê">Cauê · 09h às 16h</option>
-                  <option value="Bia">Bia · 09h às 16h</option>
-                  <option value="Clara">Clara · 14h às 21h</option>
-                  <option value="Sophia">Sophia · 14h às 21h</option>
-                  <option value="Gisele">Gisele · 09h às 16h</option>
-                  <option value="Juliany">Juliany · 09h às 16h</option>
-                  <option value="Maxine">Maxine · 09h às 16h</option>
-                  <option value="Sabrina">Sabrina · 09h às 16h</option>
-                </select>
-              </div>
-              <div class="reg-field">
-                <span class="reg-label">Quais escopos você atuou hoje?</span>
-                <p class="reg-desc">Pode selecionar mais de um.</p>
-                <div class="reg-options">
-                  <label class="reg-option"><input type="checkbox" name="escopo" value="Atendimento"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Atendimento</label>
-                  <label class="reg-option"><input type="checkbox" name="escopo" value="Coolhunting"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Coolhunting</label>
-                  <label class="reg-option"><input type="checkbox" name="escopo" value="Automações"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Automações</label>
-                </div>
-              </div>
-              <p class="reg-error" id="regErrIdent" role="alert"></p>
-              <div class="reg-nav">
-                <button type="button" class="reg-btn ghost" id="regTrocarProjeto">← Trocar projeto</button>
-                <button type="button" class="reg-btn primary" id="regIniciar">Iniciar registro <span class="reg-kbd">Enter</span></button>
-              </div>
-            </div>
-
-            <!-- Tela 3 · Perguntas -->
-            <div class="reg-screen" id="reg-questionario">
-              <div id="regSteps">
-              <div class="reg-step" data-scope="Atendimento">
-                <h3 class="reg-title"><label for="qtd_atendimentos">Quantos atendimentos você realizou hoje?</label></h3>
-                <input class="reg-input reg-input-num" type="number" id="qtd_atendimentos" min="0" placeholder="Ex.: 45">
-              </div>
-              <div class="reg-step" data-scope="Atendimento">
-                <h3 class="reg-title"><label for="gestao_filas">Conte como foi a gestão das filas durante o expediente.</label></h3>
-                <p class="reg-desc">Elas finalizaram zeradas? Houve algum pico de volume que dificultou a gestão?</p>
-                <textarea class="reg-input" id="gestao_filas" placeholder="Descreva o fluxo do dia (Ctrl+Enter para avançar)"></textarea>
-              </div>
-              <div class="reg-step" data-scope="Atendimento">
-                <h3 class="reg-title"><label for="obs_atendimento">Observações sobre Atendimento</label></h3>
-                <p class="reg-desc">Algum ponto de atenção ou recado importante? (opcional)</p>
-                <textarea class="reg-input" id="obs_atendimento" placeholder="Digite aqui se houver algo a acrescentar"></textarea>
-              </div>
-              <div class="reg-step" data-scope="Coolhunting">
-                <h3 class="reg-title">Você coletou as publicações do dia anterior dos concorrentes?</h3>
-                <div class="reg-options reg-options-yn">
-                  <label class="reg-option" data-tone="yes"><input type="radio" name="cool_coleta" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
-                  <label class="reg-option" data-tone="no"><input type="radio" name="cool_coleta" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Coolhunting">
-                <h3 class="reg-title">Você monitorou e enviou os assuntos em alta no período com a recorrência estabelecida?</h3>
-                <div class="reg-options reg-options-yn">
-                  <label class="reg-option" data-tone="yes"><input type="radio" name="cool_monitoramento" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
-                  <label class="reg-option" data-tone="no"><input type="radio" name="cool_monitoramento" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Coolhunting">
-                <h3 class="reg-title">Você enviou sugestões de status para os posts do Facebook de Casas Bahia e Pontofrio?</h3>
-                <div class="reg-options reg-options-yn">
-                  <label class="reg-option" data-tone="yes"><input type="radio" name="cool_status" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
-                  <label class="reg-option" data-tone="no"><input type="radio" name="cool_status" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Coolhunting">
-                <h3 class="reg-title">Quantas interações para as entradas em Mar Aberto você criou?</h3>
-                <div class="reg-pair">
-                  <div class="reg-field"><label class="reg-label" for="interacoes_cb">Casas Bahia</label><input class="reg-input" type="number" id="interacoes_cb" min="0" placeholder="0"></div>
-                  <div class="reg-field"><label class="reg-label" for="interacoes_pf">Pontofrio</label><input class="reg-input" type="number" id="interacoes_pf" min="0" placeholder="0"></div>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Coolhunting">
-                <h3 class="reg-title">Hoje você enviou alguma ideia de conteúdo para a Chuva de Ideias?</h3>
-                <div class="reg-options reg-options-yn">
-                  <label class="reg-option" data-tone="yes"><input type="radio" name="cool_chuva" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
-                  <label class="reg-option" data-tone="no"><input type="radio" name="cool_chuva" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Automações">
-                <h3 class="reg-title">Você realizou a revisão/correção de todos os casos pendentes da classificação automática?</h3>
-                <div class="reg-options reg-options-yn">
-                  <label class="reg-option" data-tone="yes"><input type="radio" name="auto_revisao_class" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
-                  <label class="reg-option" data-tone="no"><input type="radio" name="auto_revisao_class" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Automações">
-                <h3 class="reg-title">Você realizou a classificação dos casos não mapeados pela classificação automática?</h3>
-                <div class="reg-options reg-options-yn">
-                  <label class="reg-option" data-tone="yes"><input type="radio" name="auto_nao_mapeados" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
-                  <label class="reg-option" data-tone="no"><input type="radio" name="auto_nao_mapeados" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Automações">
-                <h3 class="reg-title">Você realizou a revisão de todos os casos pendentes da fila do Concierge?</h3>
-                <div class="reg-options reg-options-yn">
-                  <label class="reg-option" data-tone="yes"><input type="radio" name="auto_concierge" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
-                  <label class="reg-option" data-tone="no"><input type="radio" name="auto_concierge" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Automações">
-                <h3 class="reg-title">Você realizou a revisão de todos os casos pendentes da fila do Chatbot?</h3>
-                <div class="reg-options reg-options-yn">
-                  <label class="reg-option" data-tone="yes"><input type="radio" name="auto_chatbot" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
-                  <label class="reg-option" data-tone="no"><input type="radio" name="auto_chatbot" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Automações">
-                <h3 class="reg-title">Você verificou todos os casos de envio de DM pelo chatbot?</h3>
-                <div class="reg-options reg-options-yn">
-                  <label class="reg-option" data-tone="yes"><input type="radio" name="auto_dm_chatbot" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
-                  <label class="reg-option" data-tone="no"><input type="radio" name="auto_dm_chatbot" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Automações">
-                <h3 class="reg-title">Você realizou o envio do link na DM nos casos em que o concierge falhou?</h3>
-                <div class="reg-options reg-options-yn">
-                  <label class="reg-option" data-tone="yes"><input type="radio" name="auto_link_dm" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
-                  <label class="reg-option" data-tone="no"><input type="radio" name="auto_link_dm" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
-                </div>
-              </div>
-              <div class="reg-step" data-scope="Automações">
-                <h3 class="reg-title"><label for="obs_automacoes">Observações sobre Automações</label></h3>
-                <p class="reg-desc">Relate instabilidades, bugs ou anotações extras.</p>
-                <textarea class="reg-input" id="obs_automacoes" placeholder="Escreva aqui (Ctrl+Enter para avançar)"></textarea>
-              </div>
-              </div>
-              <div class="reg-nav">
-                <button type="button" class="reg-btn ghost" id="regVoltar">← Anterior</button>
-                <button type="button" class="reg-btn primary" id="regAvancar"><span id="regAvancarTxt">Avançar</span> <span class="reg-kbd">Enter</span></button>
-              </div>
-            </div>
-
+          <span class="section-eyebrow">01 · Passo-a-passo</span>
+          <h2>Treinamentos</h2>
           </div>
-        </div>
+
+          <h3 style="margin-top:0">Checklist</h3>
+          <p>Temos uma <strong><a href="https://docs.google.com/spreadsheets/d/1jjkD22za26BMTtSyF3eAlJFbGMTOeiRCNSQog4sA88Q/edit?usp=sharing">planilha</a></strong> para você dar o check em cada treinamento finalizado.</p>
+
+
+       <ol class="steps">
+       
+        <h3 class="sub-head" id="101-elife">Conhecendo a Elife</h3>
+        <li><a href="https://drive.google.com/file/d/1fijBcevO3bgtLDlQz9u2DMkiNaIqpB4X/view">Cultura e Operação da Elife</a></li>
+        <li><a href="https://drive.google.com/file/d/1DM-5yxo5cqg7W5JWoFwiqbUBcAax6fj0/view">O que é Pool?</a></li>
+        <li><a href="https://drive.google.com/file/d/1KQLK7gPiPBLa2aLP61n_2GvYZ7UjUSuY/view">Programa de Reconhecimento</a></li>
+
+
+        <h3 class="sub-head" id="101-crm">Manual de CRM</h3>
+        <li><a href="https://drive.google.com/file/d/1u7Ip8Gj8dsZyRV0uaPn9Gkx8gdxNmmqb/view?usp=sharing">Como é o atendimento?</a></li>
+
+        <h3 class="sub-head" id="101-buzz">Conhecendo a Buzzmonitor</h3>
+        <li><a href="https://drive.google.com/file/d/11YaQEa-muz3JRkg2vOinC9FIEDlUay8j/view?usp=sharing">Vídeo sobre a Buzzmonitor</a></li>
+        <li><a href="https://docs.google.com/presentation/d/13BuTlAtAvjCP2TdeY1kUm_Cni4feMkGWOWsdEtEz-Co/edit?usp=sharing">Material sobre a Buzzmonitor</a></li>
+
+        <h3 class="sub-head" id="101-chat">Sobre o Google Chat</h3>
+        <li><a href="https://drive.google.com/file/d/1rIRIY1z5uugdc8ThP4Y4IAFxgKf2vXWp/view?usp=sharing">Treinamento GChat</a></li>
+
+        <h3 class="sub-head" id="101-pin">Conhecendo o Pin</h3>
+        <li><a href="https://drive.google.com/file/d/11XB9QacYWEIl4VIm8ZyoE2MpEAgJgivv/view?usp=sharing">Vídeo sobre o tom de voz</a></li>
+        <li><a href="https://docs.google.com/presentation/d/1jsuz_pLq3RCQlFLicAwLCT-1vJe075jI/edit?usp=sharing&ouid=107728421555648936052&rtpof=true&sd=true">Material</a></li>
+
+        <h3 class="sub-head" id="101-baianinho">Conhecendo o Baianinho</h3>
+        <li><a href="https://docs.google.com/presentation/d/10Ms134NQQeFh0mnAjQq1Al9dyrrLLz8ldYpZip3cCJE/edit?slide=id.g3e25b9c614b_0_0#slide=id.g3e25b9c614b_0_0">Tom de voz</a></li>
+        <li><a href="https://docs.google.com/document/d/1ll8aQyJzdPvm6uWQod-dJ8HQ_9UhiZk317DVP-dCajI/edit?tab=t.0#heading=h.xbv2h5ik7kfm">Direcional</a></li>
+
+        <h3 class="sub-head" id="101-prompts">Prompts no Gemini</h3>
+        <li><a href="https://gemini.google.com/gem/cd0c25badf92">BahiaAvalia</a></li>
+        <li><a href="https://gemini.google.com/gem/d195fbce8127">Pinfessor</a></li>
+
+        <h3 class="sub-head" id="101-estrategia">Estratégia 2026</h3>
+        <li><a href="https://docs.google.com/presentation/d/1T7DgbDRIuFLV8fn_CpglrAuDN6DZRH1OTbV2xz5ROuQ/edit?usp=sharing">Entenda a estratégia para 2026</a></li>
+      
+        <h3 class="sub-head" id="101-carne">Conhecendo o Carnê Casas Bahia</h3>
+        <li><a href="https://www.canva.com/design/DAGtEZ-EU24/up8CBtPl5uwb3Mq4cKJRrA/view?utm_content=DAGtEZ-EU24&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6876dbe34f#1">Direcional sobre o Carnê</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1zXSZt1r0fuKdJlwUUzhV7iJ6Oyxl0Bb8l-_QlyiNpOk/edit?gid=970842925#gid=970842925">FAQ do Carnê</a></li>
+       
+        <h3 class="sub-head" id="101-venda">Pré-venda</h3>
+        <li><a href="https://chat.google.com/room/AAQAl7Z5X0s/PDP5d6S8vDA/PDP5d6S8vDA?cls=10">Manual de Pré-Venda</a></li>
+
+       </ol>
+      </section>
 
 
       <!-- ============================================================
@@ -699,7 +611,7 @@
         </div>
 
         <h3 class="sub-head" id="revisao-classificacao">📊 A. Revisão da classificação</h3>
-        <section><p>Temos uma automação que faz a classificação das menções e outra que revisa essas menções.</section></p>
+        <p>Temos uma automação que faz a classificação das menções e outra que revisa essas menções.</p>
 
         <ol class="steps">
           <li>
@@ -876,8 +788,6 @@
             </div>
           </div>
         </div>
-      </section>
-
 
         <div class="mascot-tip">
           <img src="assets/baianinho2.png" alt="" style="width:44px; border-radius:50%; object-fit:cover; object-position:top;">
@@ -890,6 +800,202 @@
 
     </main>
 
+    <!-- ============================================================
+         REGISTRO DE TAREFAS
+         Fica no mesmo arquivo, mas só aparece em index.html#registro
+         (o botão da sidebar abre esse endereço em uma nova aba).
+    ============================================================ -->
+    <div class="registro-view only-registro" id="registro">
+      <header class="hero hero-compact">
+      <div class="hero-inner">
+        <div>
+          <span class="hero-eyebrow">📝 Fim do expediente</span>
+          <h1>Registro de Tarefas</h1>
+          <p class="lead">Antes de encerrar o turno, registre o que você fez hoje. Só aparecem as perguntas dos escopos em que você atuou.</p>
+        </div>
+        <div class="hero-mascots">
+          <img class="pg" src="assets/pinguim.png" alt="Pinzinho, o pinguim que monitora as automações">
+        </div>
+      </div>
+      </header>
+
+    <main class="content content-narrow">
+              <div class="reg-card" id="regCard">
+                <div class="reg-body">
+      
+                  <div class="reg-progress" id="regProgress" hidden>
+                    <div class="reg-progress-meta">
+                      <span id="regCounter">Pergunta 1 de 1</span>
+                      <span class="reg-scope" id="regScope"></span>
+                    </div>
+                    <div class="reg-track"><div class="reg-fill" id="regFill"></div></div>
+                  </div>
+      
+                  <!-- Tela 1 · Projeto -->
+                  <div class="reg-screen is-active" id="reg-projeto">
+                    <h3 class="reg-title">Qual projeto você atuou hoje?</h3>
+                    <div class="reg-projects">
+                      <button type="button" class="reg-project" data-projeto="Casas Bahia">
+                        <span class="rp-name">Casas Bahia</span>
+                        <span class="rp-sub">Casas Bahia &amp; Pontofrio</span>
+                      </button>
+                      <button type="button" class="reg-project is-muted" data-projeto="MOBIL">
+                        <span class="rp-name">MOBIL</span>
+                        <span class="rp-sub">Ainda sem formulário ativo</span>
+                      </button>
+                    </div>
+                    <p class="reg-error" id="regErrProjeto" role="alert"></p>
+                  </div>
+      
+                  <!-- Tela 2 · Identificação -->
+                  <div class="reg-screen" id="reg-identificacao">
+                    <div class="reg-field">
+                      <label class="reg-label" for="reg-data">Data do registro</label>
+                      <input class="reg-input" type="date" id="reg-data" readonly>
+                    </div>
+                    <div class="reg-field">
+                      <label class="reg-label" for="reg-nome">Quem é você?</label>
+                      <select class="reg-input" id="reg-nome">
+                        <option value="" disabled selected>Selecione seu nome e horário</option>
+                        <option value="Cauê">Cauê · 09h às 16h</option>
+                        <option value="Bia">Bia · 09h às 16h</option>
+                        <option value="Clara">Clara · 14h às 21h</option>
+                        <option value="Sophia">Sophia · 14h às 21h</option>
+                        <option value="Gisele">Gisele · 09h às 16h</option>
+                        <option value="Juliany">Juliany · 09h às 16h</option>
+                        <option value="Maxine">Maxine · 09h às 16h</option>
+                        <option value="Sabrina">Sabrina · 09h às 16h</option>
+                      </select>
+                    </div>
+                    <div class="reg-field">
+                      <span class="reg-label">Quais escopos você atuou hoje?</span>
+                      <p class="reg-desc">Pode selecionar mais de um.</p>
+                      <div class="reg-options">
+                        <label class="reg-option"><input type="checkbox" name="escopo" value="Atendimento"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Atendimento</label>
+                        <label class="reg-option"><input type="checkbox" name="escopo" value="Coolhunting"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Coolhunting</label>
+                        <label class="reg-option"><input type="checkbox" name="escopo" value="Automações"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Automações</label>
+                      </div>
+                    </div>
+                    <p class="reg-error" id="regErrIdent" role="alert"></p>
+                    <div class="reg-nav">
+                      <button type="button" class="reg-btn ghost" id="regTrocarProjeto">← Trocar projeto</button>
+                      <button type="button" class="reg-btn primary" id="regIniciar">Iniciar registro <span class="reg-kbd">Enter</span></button>
+                    </div>
+                  </div>
+      
+                  <!-- Tela 3 · Perguntas -->
+                  <div class="reg-screen" id="reg-questionario">
+                    <div id="regSteps">
+                    <div class="reg-step" data-scope="Atendimento">
+                      <h3 class="reg-title"><label for="qtd_atendimentos">Quantos atendimentos você realizou hoje?</label></h3>
+                      <input class="reg-input reg-input-num" type="number" id="qtd_atendimentos" min="0" placeholder="Ex.: 45">
+                    </div>
+                    <div class="reg-step" data-scope="Atendimento">
+                      <h3 class="reg-title"><label for="gestao_filas">Conte como foi a gestão das filas durante o expediente.</label></h3>
+                      <p class="reg-desc">Elas finalizaram zeradas? Houve algum pico de volume que dificultou a gestão?</p>
+                      <textarea class="reg-input" id="gestao_filas" placeholder="Descreva o fluxo do dia (Ctrl+Enter para avançar)"></textarea>
+                    </div>
+                    <div class="reg-step" data-scope="Atendimento">
+                      <h3 class="reg-title"><label for="obs_atendimento">Observações sobre Atendimento</label></h3>
+                      <p class="reg-desc">Algum ponto de atenção ou recado importante? (opcional)</p>
+                      <textarea class="reg-input" id="obs_atendimento" placeholder="Digite aqui se houver algo a acrescentar"></textarea>
+                    </div>
+                    <div class="reg-step" data-scope="Coolhunting">
+                      <h3 class="reg-title">Você coletou as publicações do dia anterior dos concorrentes?</h3>
+                      <div class="reg-options reg-options-yn">
+                        <label class="reg-option" data-tone="yes"><input type="radio" name="cool_coleta" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
+                        <label class="reg-option" data-tone="no"><input type="radio" name="cool_coleta" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Coolhunting">
+                      <h3 class="reg-title">Você monitorou e enviou os assuntos em alta no período com a recorrência estabelecida?</h3>
+                      <div class="reg-options reg-options-yn">
+                        <label class="reg-option" data-tone="yes"><input type="radio" name="cool_monitoramento" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
+                        <label class="reg-option" data-tone="no"><input type="radio" name="cool_monitoramento" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Coolhunting">
+                      <h3 class="reg-title">Você enviou sugestões de status para os posts do Facebook de Casas Bahia e Pontofrio?</h3>
+                      <div class="reg-options reg-options-yn">
+                        <label class="reg-option" data-tone="yes"><input type="radio" name="cool_status" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
+                        <label class="reg-option" data-tone="no"><input type="radio" name="cool_status" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Coolhunting">
+                      <h3 class="reg-title">Quantas interações para as entradas em Mar Aberto você criou?</h3>
+                      <div class="reg-pair">
+                        <div class="reg-field"><label class="reg-label" for="interacoes_cb">Casas Bahia</label><input class="reg-input" type="number" id="interacoes_cb" min="0" placeholder="0"></div>
+                        <div class="reg-field"><label class="reg-label" for="interacoes_pf">Pontofrio</label><input class="reg-input" type="number" id="interacoes_pf" min="0" placeholder="0"></div>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Coolhunting">
+                      <h3 class="reg-title">Hoje você enviou alguma ideia de conteúdo para a Chuva de Ideias?</h3>
+                      <div class="reg-options reg-options-yn">
+                        <label class="reg-option" data-tone="yes"><input type="radio" name="cool_chuva" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
+                        <label class="reg-option" data-tone="no"><input type="radio" name="cool_chuva" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Automações">
+                      <h3 class="reg-title">Você realizou a revisão/correção de todos os casos pendentes da classificação automática?</h3>
+                      <div class="reg-options reg-options-yn">
+                        <label class="reg-option" data-tone="yes"><input type="radio" name="auto_revisao_class" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
+                        <label class="reg-option" data-tone="no"><input type="radio" name="auto_revisao_class" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Automações">
+                      <h3 class="reg-title">Você realizou a classificação dos casos não mapeados pela classificação automática?</h3>
+                      <div class="reg-options reg-options-yn">
+                        <label class="reg-option" data-tone="yes"><input type="radio" name="auto_nao_mapeados" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
+                        <label class="reg-option" data-tone="no"><input type="radio" name="auto_nao_mapeados" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Automações">
+                      <h3 class="reg-title">Você realizou a revisão de todos os casos pendentes da fila do Concierge?</h3>
+                      <div class="reg-options reg-options-yn">
+                        <label class="reg-option" data-tone="yes"><input type="radio" name="auto_concierge" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
+                        <label class="reg-option" data-tone="no"><input type="radio" name="auto_concierge" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Automações">
+                      <h3 class="reg-title">Você realizou a revisão de todos os casos pendentes da fila do Chatbot?</h3>
+                      <div class="reg-options reg-options-yn">
+                        <label class="reg-option" data-tone="yes"><input type="radio" name="auto_chatbot" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
+                        <label class="reg-option" data-tone="no"><input type="radio" name="auto_chatbot" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Automações">
+                      <h3 class="reg-title">Você verificou todos os casos de envio de DM pelo chatbot?</h3>
+                      <div class="reg-options reg-options-yn">
+                        <label class="reg-option" data-tone="yes"><input type="radio" name="auto_dm_chatbot" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
+                        <label class="reg-option" data-tone="no"><input type="radio" name="auto_dm_chatbot" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Automações">
+                      <h3 class="reg-title">Você realizou o envio do link na DM nos casos em que o concierge falhou?</h3>
+                      <div class="reg-options reg-options-yn">
+                        <label class="reg-option" data-tone="yes"><input type="radio" name="auto_link_dm" value="Sim"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sim</label>
+                        <label class="reg-option" data-tone="no"><input type="radio" name="auto_link_dm" value="Não"><span class="reg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Não</label>
+                      </div>
+                    </div>
+                    <div class="reg-step" data-scope="Automações">
+                      <h3 class="reg-title"><label for="obs_automacoes">Observações sobre Automações</label></h3>
+                      <p class="reg-desc">Relate instabilidades, bugs ou anotações extras.</p>
+                      <textarea class="reg-input" id="obs_automacoes" placeholder="Escreva aqui (Ctrl+Enter para avançar)"></textarea>
+                    </div>
+                    </div>
+                    <div class="reg-nav">
+                      <button type="button" class="reg-btn ghost" id="regVoltar">← Anterior</button>
+                      <button type="button" class="reg-btn primary" id="regAvancar"><span id="regAvancarTxt">Avançar</span> <span class="reg-kbd">Enter</span></button>
+                    </div>
+                  </div>
+      
+                </div>
+              </div>
+      
+      <p class="reg-back">Dúvida sobre alguma tarefa? <a href="index.html">Consulte o Painel de Operações</a>.</p>
+    </main>
+    </div>
+
     <footer class="site-footer">
       <div style="display:flex; align-items:center; gap:10px;">
         <img src="assets/logo-cb.png" alt="Casas Bahia">
@@ -901,7 +1007,7 @@
 </div>
 
 <!-- Pinzinho watch widget -->
-<div class="watch-widget">
+<div class="watch-widget only-manual">
   <div class="watch-bubble" id="watchBubble">
     <span class="wb-label">Pinzinho de plantão</span>
     <span id="watchText">Já faz 30 minutos? Hora de checar Concierge e Chatbot! 🐧</span>
