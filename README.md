@@ -1,8 +1,8 @@
-# Manual de Automações · Squad Órion
+# Painel de Operações · Squad Órion
 
 Guia oficial de operação da **Squad Órion (Elife)** para os projetos **Casas Bahia & Pontofrio**. Ele reúne em uma única página as rotinas de revisão das automações de **Concierge**, **Chatbot** e **Classificação**, além do **Registro de Tarefas** preenchido no fim do expediente.
 
-O manual serve como material de consulta no dia a dia e de onboarding para quem está entrando no time.
+O painel serve como material de consulta no dia a dia e de onboarding para quem está entrando no time.
 
 ## Estrutura dos arquivos
 
